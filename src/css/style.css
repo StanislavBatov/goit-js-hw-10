@@ -13,20 +13,17 @@ h1 {
 }
 
 .loader {
-  display: none;
   text-align: center;
   margin-bottom: 20px;
 }
 
 .error {
-  display: none;
   text-align: center;
   color: red;
   margin-bottom: 20px;
 }
 
 .cat-info {
-  display: none;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -42,4 +39,8 @@ h1 {
 
 .temperament {
   font-weight: bold;
+}
+
+.invisible {
+  display: none;
 }
