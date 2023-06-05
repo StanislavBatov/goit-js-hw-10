@@ -26,7 +26,7 @@ function hideError() {
 }
 
 function showCatInfo() {
-  catInfo.style.display = 'block';
+  catInfo.style.display = 'flex';
 }
 
 function hideCatInfo() {
@@ -38,19 +38,23 @@ function displayCatInfo(catData) {
   const catName = catData.name;
   const catDescription = catData.description;
   const catTemperament = catData.temperament;
-  const catImageURL = catData.url;
+  const catImageURL = catData.url
+;
 
   const catInfoHTML = `
-    <img src="${catImageURL}" class="cat-img">
+    <img src="${catImageURL}" class="cat-img" width="400" height="400">
+    <div class="cat-text">
     <h1>${catName}</h1>
     <p>${catDescription}</p>
     <p><span class="temperament">Temperament: </span>${catTemperament}</p>
+    </div>
   `;
 
   catInfo.innerHTML = catInfoHTML;
 }
 
 function handleBreedSelectChange(event) {
+  event.preventDefault();
   const selectedBreedId = event.target.value;
   if (selectedBreedId !== currentBreedId) {
     currentBreedId = selectedBreedId;
@@ -93,5 +97,7 @@ function initializeApp() {
       showError();
     });
 }
+
+breedSelect.addEventListener('change', handleBreedSelectChange);
 
 initializeApp();

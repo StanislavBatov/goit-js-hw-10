@@ -31,7 +31,7 @@ export function fetchBreeds() {
 export function fetchCatByBreed(breedId) {
   const url = `${BASE_URL}/images/search?breed_ids=${breedId}`;
   const headers = {
-    'x-api-key': API_KEY,
+    'x-api-key': API_KEY
   };
 
   return fetch(url, { headers })
@@ -45,10 +45,17 @@ export function fetchCatByBreed(breedId) {
       if (!data || data.length === 0) {
         throw new Error('No cat data received from the server.');
       }
-      return data[0].breeds[0];
+      const catData = {
+        url: data[0].url,
+        name: data[0].breeds[0].name,
+        description: data[0].breeds[0].description,
+        temperament: data[0].breeds[0].temperament
+      };
+      return catData;
     })
     .catch(error => {
       console.log(error);
       throw error;
     });
 }
+
